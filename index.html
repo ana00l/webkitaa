@@ -2,6 +2,7 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Memory Kita</title>
 
 <style>
@@ -632,15 +633,17 @@ footer h3{
 /* ⏳ COUNTDOWN */
 #countdownBox{
     position:fixed;
-    top:20px;
+    top:10px;
     left:50%;
     transform:translateX(-50%);
     background:#111;
-    padding:10px 20px;
+    padding:8px 12px;
     border-radius:10px;
-    font-size:14px;
+    font-size:13px;
     color:#fff;
     z-index:9999;
+    max-width:90%;
+    text-align:center;
 }
 
 /* 🎊 CONFETTI */
@@ -774,6 +777,259 @@ h1{
     .birthday-page{
         justify-content:flex-start; /* biar mulai dari atas di HP */
         padding-top:40px;
+    }
+}
+/* ===== RESET ===== */
+*{
+    margin:0;
+    padding:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:sans-serif;
+    background:black;
+    color:white;
+    overflow-x:hidden;
+    width:100%;
+}
+
+/* ===== MEDIA GLOBAL ===== */
+img, video{
+    max-width:100%;
+    height:auto;
+    display:block;
+}
+
+/* ===== LOGIN ===== */
+.login-wrapper{
+    position:fixed;
+    inset:0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(-45deg,#000,#1a1a1a,#111,#000);
+    background-size:400% 400%;
+    animation:bgMove 8s ease infinite;
+    z-index:9999;
+    padding:20px;
+}
+
+.login-card{
+    background:rgba(20,20,20,0.95);
+    padding:25px;
+    border-radius:15px;
+    text-align:center;
+    width:100%;
+    max-width:320px;
+}
+
+/* ===== PAGE ===== */
+.page{
+    min-height:100vh;
+    padding:40px 15px;
+    text-align:center;
+}
+
+/* ===== HERO ===== */
+.title{
+    font-size:clamp(22px,5vw,40px);
+}
+
+/* ===== TEXT ===== */
+#typing{
+    margin-top:20px;
+    max-width:700px;
+    margin-inline:auto;
+    font-size:clamp(14px,3.5vw,18px);
+    color:#aaa;
+    line-height:1.6;
+}
+
+/* ===== CAROUSEL ===== */
+.carousel{
+    display:flex;
+    gap:12px;
+    overflow-x:auto;
+    padding:10px;
+    scroll-snap-type:x mandatory;
+}
+
+.card{
+    flex:0 0 auto;
+    width:120px;
+    background:#181818;
+    padding:10px;
+    border-radius:12px;
+    scroll-snap-align:center;
+}
+
+.card img{
+    width:100%;
+    height:120px;
+    object-fit:cover;
+    border-radius:10px;
+}
+
+/* ===== FOTO ===== */
+.foto-item{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:25px;
+    margin:50px 0;
+    flex-wrap:wrap;
+}
+
+/* zigzag */
+.foto-item:nth-child(even){
+    flex-direction:row-reverse;
+}
+
+.foto-box{
+    background:white;
+    padding:10px 10px 20px;
+    border-radius:12px;
+    width:260px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.5);
+    transform:rotate(-2deg);
+}
+
+.foto-item:nth-child(even) .foto-box{
+    transform:rotate(2deg);
+}
+
+.foto-box img{
+    width:100%;
+    height:240px;
+    object-fit:cover;
+    border-radius:8px;
+}
+
+/* ===== VIDEO ===== */
+.video-wrapper{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.video-box video{
+    width:260px;
+    aspect-ratio:16/9;
+    border-radius:8px;
+}
+
+/* ===== FORM ===== */
+input, textarea{
+    width:100%;
+    max-width:400px;
+    padding:10px;
+    border-radius:8px;
+    border:none;
+}
+
+/* ===== BUTTON ===== */
+button{
+    padding:10px 20px;
+    background:#ff4d6d;
+    color:white;
+    border:none;
+    border-radius:8px;
+}
+
+/* ===== PESAN ===== */
+.pesan-box{
+    background:#181818;
+    padding:15px;
+    margin:10px auto;
+    max-width:500px;
+    border-radius:10px;
+}
+
+/* ===== FOOTER ===== */
+footer{
+    background:#111;
+    padding:25px 15px;
+    text-align:center;
+}
+
+/* ===== BIRTHDAY PAGE FIX ===== */
+.birthday-page{
+    position:fixed;
+    inset:0;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    background:linear-gradient(135deg,#ff4d6d,#ff9aa2);
+    padding:20px;
+    overflow-y:auto;
+}
+
+/* ===== SURAT ===== */
+.surat-box{
+    display:none;
+    background:white;
+    color:black;
+    padding:15px;
+    border-radius:12px;
+    max-width:300px;
+}
+
+/* ===== RESPONSIVE HP ===== */
+@media(max-width:768px){
+
+    .foto-item{
+        flex-direction:column !important;
+        gap:15px;
+    }
+
+    .foto-box{
+        width:90%;
+        transform:rotate(0deg);
+    }
+
+    .foto-box img{
+        height:220px;
+    }
+
+    .card{
+        width:100px;
+    }
+
+    .card img{
+        height:100px;
+    }
+
+    .video-box video{
+        width:100%;
+        max-width:320px;
+    }
+
+    .page{
+        padding:30px 12px;
+    }
+}
+
+@media(max-width:480px){
+
+    h1{
+        font-size:20px;
+    }
+
+    .bucin-text{
+        font-size:13px;
+    }
+
+    .foto-box{
+        width:95%;
+    }
+
+    .login-card{
+        padding:20px;
     }
 }
 </style>
