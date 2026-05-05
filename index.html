@@ -783,7 +783,6 @@ h1{
 *{
     margin:0;
     padding:0;
-    padding:0;
     box-sizing:border-box;
 }
 
@@ -792,10 +791,9 @@ body{
     background:black;
     color:white;
     overflow-x:hidden;
-    width:100%;
 }
 
-/* ===== MEDIA GLOBAL ===== */
+/* MEDIA GLOBAL */
 img, video{
     max-width:100%;
     height:auto;
@@ -809,227 +807,88 @@ img, video{
     display:flex;
     justify-content:center;
     align-items:center;
-    background:linear-gradient(-45deg,#000,#1a1a1a,#111,#000);
+    background: linear-gradient(-45deg,#000,#1a1a1a,#111,#000);
     background-size:400% 400%;
-    animation:bgMove 8s ease infinite;
+    animation: bgMove 8s ease infinite;
     z-index:9999;
-    padding:20px;
 }
 
-.login-card{
-    background:rgba(20,20,20,0.95);
-    padding:25px;
-    border-radius:15px;
-    text-align:center;
-    width:100%;
-    max-width:320px;
-}
-
-/* ===== PAGE ===== */
+/* ===== PAGE (🔥 FIX DISINI) ===== */
 .page{
     min-height:100vh;
-    padding:40px 15px;
+    padding:40px 20px;
     text-align:center;
+
+    max-width:1000px;   /* 🔥 tambahan */
+    margin:0 auto;      /* 🔥 tambahan */
 }
 
-/* ===== HERO ===== */
-.title{
-    font-size:clamp(22px,5vw,40px);
-}
-
-/* ===== TEXT ===== */
-#typing{
-    margin-top:20px;
-    max-width:700px;
-    margin-inline:auto;
-    font-size:clamp(14px,3.5vw,18px);
-    color:#aaa;
-    line-height:1.6;
-}
-
-/* ===== CAROUSEL ===== */
-.carousel{
-    display:flex;
-    gap:12px;
-    overflow-x:auto;
-    padding:10px;
-    scroll-snap-type:x mandatory;
-}
-
+/* ===== CARD ===== */
 .card{
-    flex:0 0 auto;
-    width:120px;
+    width:130px;
+    flex-shrink:0;
     background:#181818;
     padding:10px;
     border-radius:12px;
+    cursor:pointer;
+    transition:0.3s;
     scroll-snap-align:center;
 }
 
-.card img{
-    width:100%;
-    height:120px;
-    object-fit:cover;
-    border-radius:10px;
-}
-
 /* ===== FOTO ===== */
-.foto-item{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:25px;
-    margin:50px 0;
-    flex-wrap:wrap;
-}
-
-/* zigzag */
-.foto-item:nth-child(even){
-    flex-direction:row-reverse;
-}
-
 .foto-box{
+    position:relative;
     background:white;
-    padding:10px 10px 20px;
+    padding:10px 10px 25px;
     border-radius:12px;
-    width:260px;
-    box-shadow:0 10px 25px rgba(0,0,0,0.5);
     transform:rotate(-2deg);
-}
+    box-shadow:0 10px 25px rgba(0,0,0,0.5);
+    transition:0.3s;
 
-.foto-item:nth-child(even) .foto-box{
-    transform:rotate(2deg);
-}
-
-.foto-box img{
-    width:100%;
-    height:240px;
-    object-fit:cover;
-    border-radius:8px;
+    width:100%;        /* 🔥 ganti */
+    max-width:260px;   /* 🔥 ganti */
 }
 
 /* ===== VIDEO ===== */
-.video-wrapper{
-    display:flex;
-    justify-content:center;
-    gap:20px;
-    flex-wrap:wrap;
-}
-
 .video-box video{
-    width:260px;
+    width:100%;        /* 🔥 ganti */
+    max-width:260px;   /* 🔥 ganti */
     aspect-ratio:16/9;
-    border-radius:8px;
+    object-fit:cover;
+    border-radius:6px;
 }
 
-/* ===== FORM ===== */
-input, textarea{
-    width:100%;
-    max-width:400px;
-    padding:10px;
-    border-radius:8px;
-    border:none;
-}
+/* ===== TAMBAHAN (AMAN) ===== */
 
-/* ===== BUTTON ===== */
-button{
-    padding:10px 20px;
-    background:#ff4d6d;
-    color:white;
-    border:none;
-    border-radius:8px;
-}
-
-/* ===== PESAN ===== */
-.pesan-box{
-    background:#181818;
-    padding:15px;
-    margin:10px auto;
-    max-width:500px;
-    border-radius:10px;
-}
-
-/* ===== FOOTER ===== */
-footer{
-    background:#111;
-    padding:25px 15px;
-    text-align:center;
-}
-
-/* ===== BIRTHDAY PAGE FIX ===== */
-.birthday-page{
-    position:fixed;
-    inset:0;
-    display:flex;
-    flex-direction:column;
+/* biar video tetap center */
+.video-wrapper{
     justify-content:center;
-    align-items:center;
-    text-align:center;
-    background:linear-gradient(135deg,#ff4d6d,#ff9aa2);
-    padding:20px;
-    overflow-y:auto;
 }
 
-/* ===== SURAT ===== */
-.surat-box{
-    display:none;
-    background:white;
-    color:black;
-    padding:15px;
-    border-radius:12px;
-    max-width:300px;
+/* scroll lagu lebih smooth */
+.carousel{
+    scroll-behavior:smooth;
 }
 
-/* ===== RESPONSIVE HP ===== */
 @media(max-width:768px){
+    body{
+        font-size:14px;
+    }
+
+    .page{
+        padding:20px 10px;
+    }
 
     .foto-item{
         flex-direction:column !important;
-        gap:15px;
-    }
-
-    .foto-box{
-        width:90%;
-        transform:rotate(0deg);
-    }
-
-    .foto-box img{
-        height:220px;
     }
 
     .card{
         width:100px;
     }
 
-    .card img{
-        height:100px;
-    }
-
     .video-box video{
         width:100%;
-        max-width:320px;
-    }
-
-    .page{
-        padding:30px 12px;
-    }
-}
-
-@media(max-width:480px){
-
-    h1{
-        font-size:20px;
-    }
-
-    .bucin-text{
-        font-size:13px;
-    }
-
-    .foto-box{
-        width:95%;
-    }
-
-    .login-card{
-        padding:20px;
     }
 }
 </style>
