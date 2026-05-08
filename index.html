@@ -858,6 +858,128 @@ img, video{
     border-radius:6px;
 }
 
+/* ===== TIMELINE KISAH ===== */
+.timeline-section{
+    padding:60px 20px;
+    position:relative;
+}
+
+.timeline-title{
+    text-align:center;
+    font-size:32px;
+    margin-bottom:50px;
+    color:#ff4d6d;
+    text-shadow:0 0 15px rgba(255,77,109,0.5);
+}
+
+/* garis tengah */
+.timeline{
+    position:relative;
+    max-width:900px;
+    margin:auto;
+}
+
+.timeline::after{
+    content:'';
+    position:absolute;
+    width:4px;
+    background:#ff4d6d;
+    top:0;
+    bottom:0;
+    left:50%;
+    transform:translateX(-50%);
+    box-shadow:0 0 15px #ff4d6d;
+}
+
+/* item */
+.timeline-item{
+    padding:20px 40px;
+    position:relative;
+    width:50%;
+}
+
+/* bulatan */
+.timeline-item::after{
+    content:'💖';
+    position:absolute;
+    width:40px;
+    height:40px;
+    right:-20px;
+    background:#111;
+    border:3px solid #ff4d6d;
+    top:30px;
+    border-radius:50%;
+    z-index:2;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:18px;
+}
+
+/* kiri */
+.left{
+    left:0;
+    text-align:right;
+}
+
+/* kanan */
+.right{
+    left:50%;
+}
+
+.right::after{
+    left:-20px;
+}
+
+/* box isi */
+.timeline-content{
+    background:#181818;
+    padding:20px;
+    border-radius:15px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.5);
+    transition:0.3s;
+}
+
+.timeline-content:hover{
+    transform:translateY(-5px) scale(1.02);
+}
+
+.timeline-content h3{
+    color:#ff4d6d;
+    margin-bottom:10px;
+}
+
+.timeline-content p{
+    color:#ccc;
+    line-height:1.7;
+    font-size:14px;
+}
+
+/* responsive */
+@media(max-width:768px){
+
+    .timeline::after{
+        left:20px;
+    }
+
+    .timeline-item{
+        width:100%;
+        padding-left:60px;
+        padding-right:20px;
+    }
+
+    .timeline-item::after{
+        left:0;
+    }
+
+    .left,
+    .right{
+        left:0;
+        text-align:left;
+    }
+}
+
 /* ===== TAMBAHAN (AMAN) ===== */
 
 /* biar video tetap center */
@@ -980,6 +1102,78 @@ img, video{
 <section class="page hero">
     <h1 class="title">Kisah Kita</h1>
     <p id="typing"></p>
+</section>
+
+
+<!-- ===== TIMELINE KISAH ===== -->
+<section class="page timeline-section">
+
+    <h2 class="timeline-title">Perjalanan Kisah Kita 💖</h2>
+
+    <div class="timeline">
+
+        <!-- FEBRUARI -->
+        <div class="timeline-item left fade">
+            <div class="timeline-content">
+                <h3>Februari 2026 ✨</h3>
+                <p>
+                    Awal pertama kali kita kenal tepat tanggal 9 Februari.
+                    Dari yang awalnya cuma orang asing,
+                    ternyata sekarang jadi rumah ternyaman buat satu sama lain.
+                </p>
+            </div>
+        </div>
+
+        <!-- MARET -->
+        <div class="timeline-item right fade">
+            <div class="timeline-content">
+                <h3>Maret 2026 🌸</h3>
+                <p>
+                    Mulai banyak cerita,
+                    mulai banyak momen kecil yang ternyata jadi berarti.
+                    Hari-hari mulai terasa lebih bahagia karena ada mas.
+                </p>
+            </div>
+        </div>
+
+        <!-- APRIL -->
+        <div class="timeline-item left fade">
+            <div class="timeline-content">
+                <h3>April 2026 💌</h3>
+                <p>
+                    Semakin dekat,
+                    semakin banyak kenangan yang kita buat bersama.
+                    Dari chat random sampai perhatian kecil yang selalu bikin nyaman.
+                </p>
+            </div>
+        </div>
+
+        <!-- MEI -->
+        <div class="timeline-item right fade">
+            <div class="timeline-content">
+                <h3>Mei 2026 🎂</h3>
+                <p>
+                    Bulan spesial buat mas.
+                    Semua kenangan, tawa, dan rasa sayang adek
+                    tersimpan di web ini supaya mas selalu inget
+                    kalau adek sayang banget sama mas 💖
+                </p>
+            </div>
+        </div>
+
+        <!-- MASA DEPAN -->
+        <div class="timeline-item left fade">
+            <div class="timeline-content">
+                <h3>Dan Selanjutnya... ♾️</h3>
+                <p>
+                    Semoga kisah ini bukan cuma tentang hari ini,
+                    tapi tentang perjalanan panjang yang akan terus kita lalui bersama,
+                    sampai kapanpun 🤍
+                </p>
+            </div>
+        </div>
+
+    </div>
 </section>
 
 <!-- HALAMAN 2 MUSIK -->
@@ -1448,7 +1642,7 @@ function logout(){
 }
 
 /* TYPEWRITER */
-const text = "Kisah kita memang baru sebentar kita bertemu dan saling kenal tanpa sengaja pada awal bulan namun kenangan kita sudah banyak maka dari itu adek buat web ini, Semua kenangan & momen kita akan tersimpan serta tersusun rapih di dalam sini, web ini adek buat dengan sengaja agar setiap momen kebersamaan kita bisa terukir jelas dan nyata, kebersamaan yg sederhana ini lah yg buat adek merasa bahagia sekali,ini adek buat untuk mas agar selalu inget adek dimanapun dan kapanpun,kalo mas kangen adek buka web ini aja yaa, adek sayangggggg masss💖";
+const text = "Kisah kita memang baru sebentar kita bertemu dan saling kenal tanpa sengaja pada bulan februari tanggal 9 tepatnya jam 13:32 namun kenangan kita sudah banyak maka dari itu adek buat web ini untuk menyimpan semua kenangan & momen kita yang akan tersimpan serta tersusun rapih di dalam sini, web ini adek buat dengan sengaja agar setiap momen kebersamaan kita bisa terukir jelas dan nyata, kebersamaan yg sederhana ini lah yg buat adek merasa bahagia sekali,ini adek buat untuk mas agar selalu inget adek dimanapun dan kapanpun,kalo mas kangen adek buka web ini aja yaa, adek sayangggggg masss💖";
 let i=0;
 function type(){
     if(i<text.length){
