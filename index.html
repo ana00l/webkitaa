@@ -610,25 +610,6 @@ footer h3{
     border-radius:10px;
     cursor:pointer;
 }
-/* ❤️ LOVE */
-#loveContainer{
-    position:fixed;
-    inset:0;
-    pointer-events:none;
-    z-index:9999;
-}
-
-.love{
-    position:absolute;
-    color:red;
-    font-size:20px;
-    animation: floatUp 3s linear forwards;
-}
-
-@keyframes floatUp{
-    from{transform:translateY(0); opacity:1;}
-    to{transform:translateY(-200px); opacity:0;}
-}
 
 /* ⏳ COUNTDOWN */
 #countdownBox{
@@ -646,24 +627,6 @@ footer h3{
     text-align:center;
 }
 
-/* 🎊 CONFETTI */
-#confetti{
-    position:fixed;
-    inset:0;
-    pointer-events:none;
-}
-.birthday-page button{
-    margin-top:20px;
-    background:white;
-    color:#ff4d6d;
-    font-weight:bold;
-    border-radius:12px;
-    padding:12px 20px;
-    box-shadow:0 5px 15px rgba(0,0,0,0.2);
-}
-.hide{
-    display:none !important;
-}
 
 /* 💌 TOMBOL SURAT */
 .surat-btn{
@@ -714,24 +677,7 @@ footer h3{
     from{opacity:0; transform:translateY(10px);}
     to{opacity:1; transform:translateY(0);}
 }
-/* ❤️ hati terbang */
-.love-fly{
-    position:absolute;
-    bottom:0;
-    font-size:20px;
-    animation: naik 2s linear forwards;
-}
 
-@keyframes naik{
-    from{
-        transform:translateY(0);
-        opacity:1;
-    }
-    to{
-        transform:translateY(-200px);
-        opacity:0;
-    }
-}
 @media(max-width:480px){
 
 h1{
@@ -979,6 +925,18 @@ img, video{
         text-align:left;
     }
 }
+#adminPesan{
+    margin-top:20px;
+}
+
+button[onclick="lihatPesan()"]{
+    opacity:0;
+    position:fixed;
+    bottom:5px;
+    right:5px;
+    width:20px;
+    height:20px;
+}
 
 /* ===== TAMBAHAN (AMAN) ===== */
 
@@ -1066,7 +1024,7 @@ img, video{
     
         <!-- 💌 TOMBOL SURAT -->
         <div class="surat-btn" onclick="toggleSurat()">
-            💌 Kirim Pesan Buat Adek
+            💌 Adakah Pesan Buat Adek?
         </div>
     </div>
 
@@ -1081,9 +1039,24 @@ img, video{
         <button onclick="kirimSurat()">Kirim 💕</button>
         <button onclick="toggleSurat()">Tutup ❌</button>
 
-        <!-- HASIL PESAN -->
         <p id="hasilSurat"></p>
-    </div>
+
+        <!-- 🔒 BUTTON ADMIN -->
+        <button onclick="lihatPesan()" 
+        style="
+        margin-top:10px;
+        background:black;
+        color:white;
+        padding:10px 15px;
+        border:none;
+        border-radius:10px;
+        cursor:pointer;
+        ">
+        🔒 Lihat Pesan Rahasia
+        </button>
+        
+        <!-- TEMPAT PESAN -->
+        <div id="adminPesan"> </div>
 
 </div>
 
@@ -1091,12 +1064,6 @@ img, video{
 
 <!-- ⏳ COUNTDOWN -->
 <div id="countdownBox"></div>
-
-<!-- 🎊 CONFETTI -->
-<canvas id="confetti"></canvas>
-
-<!-- ❤️ LOVE EFFECT -->
-<div id="loveContainer"></div>
 
 <!-- HALAMAN 1 -->
 <section class="page hero">
@@ -1789,26 +1756,30 @@ let now = new Date();
 const bulanUltah = now.getMonth() + 1;
 const tanggalUltah = now.getDate();
 
+// 🔥 ubah jadi true
+const TEST_MODE = true;
 
 function cekBirthday(){
 
-const now = new Date();
+    // MODE TEST
+    if(TEST_MODE){
+        document.getElementById("giftPopup").style.display = "flex";
+        startConfetti();
+        return;
+    }
 
-const tahun = now.getFullYear();
+    const now = new Date();
+    const tahun = now.getFullYear();
 
-// target: 11 Mei 00:00 sampai 11 Mei 23:59
-const start = new Date(tahun, 4, 11, 0, 0, 0);   // 11 Mei 00:00
-const end   = new Date(tahun, 4, 11, 23, 59, 59); // 11 Mei 23:59
+    const start = new Date(tahun, 4, 11, 0, 0, 0);
+    const end   = new Date(tahun, 4, 11, 23, 59, 59);
 
-if (now >= start && now <= end) {
-
-    document.getElementById("giftPopup").style.display = "flex";
-    startConfetti();
-
-} else {
-
-    startCountdown();
-}
+    if(now >= start && now <= end){
+        document.getElementById("giftPopup").style.display = "flex";
+        startConfetti();
+    }else{
+        startCountdown();
+    }
 }
 
 // 🎁 BUKA KADO
@@ -1840,56 +1811,6 @@ function bukaKado(){
         loveEffect();
 
     },400);
-}
-// ❤️ LOVE EFFECT
-function loveEffect(){
-    let container = document.getElementById("loveContainer");
-
-    setInterval(()=>{
-        let love = document.createElement("div");
-        love.className = "love";
-        love.innerHTML = "❤️";
-
-        love.style.left = Math.random()*100 + "%";
-        love.style.bottom = "0px";
-
-        container.appendChild(love);
-
-        setTimeout(()=>love.remove(),3000);
-    },300);
-}
-
-// 🎊 CONFETTI SIMPLE
-function startConfetti(){
-    let canvas = document.getElementById("confetti");
-    let ctx = canvas.getContext("2d");
-
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-
-    let pieces = Array.from({length:100}, () => ({
-        x:Math.random()*canvas.width,
-        y:Math.random()*canvas.height,
-        r:Math.random()*6+2,
-        d:Math.random()*100
-    }));
-
-    function draw(){
-        ctx.clearRect(0,0,canvas.width,canvas.height);
-        ctx.fillStyle="pink";
-
-        pieces.forEach(p=>{
-            ctx.beginPath();
-            ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-            ctx.fill();
-
-            p.y += 2;
-            if(p.y > canvas.height) p.y = 0;
-        });
-
-        requestAnimationFrame(draw);
-    }
-    draw();
 }
 
 function masukWeb(){
@@ -1955,25 +1876,42 @@ function toggleSurat(){
 }
 
 
-// 💕 kirim surat + SIMPAN + ANIMASI
 function kirimSurat(){
-    let isi = document.getElementById("isiSurat").value;
 
-    if(isi.trim() === ""){
-        alert("Isi dulu pesannya 😡💔");
-        return;
-    }
+let isi = document.getElementById("isiSurat").value;
 
-    // 🔥 SIMPAN KE LOCAL STORAGE
-    localStorage.setItem("suratCinta", isi);
-
-    tampilkanSurat(isi);
-
-    document.getElementById("isiSurat").value = "";
-
-    // 💖 efek hati
-    efekHati();
+if(isi.trim() === ""){
+    alert("Isi dulu pesannya 😡💔");
+    return;
 }
+
+// 🔒 ambil data lama
+let pesanRahasia =
+    JSON.parse(localStorage.getItem("pesanRahasia")) || [];
+
+// ➕ tambah pesan baru
+pesanRahasia.push({
+    pesan: isi,
+    waktu: new Date().toLocaleString("id-ID")
+});
+
+// 💾 simpan
+localStorage.setItem(
+    "pesanRahasia",
+    JSON.stringify(pesanRahasia)
+);
+
+// notif
+document.getElementById("hasilSurat").innerHTML =
+    "💖 Pesan berhasil dikirim";
+
+// kosongkan textarea
+document.getElementById("isiSurat").value = "";
+
+// efek hati
+efekHati();
+}
+
 
 // 💾 tampilkan pesan (biar ga hilang)
 function tampilkanSurat(teks){
@@ -2019,6 +1957,49 @@ function login(){
 
         cekBirthday(); // 🔥 WAJIB
     }
+}
+
+function lihatPesan(){
+
+// 🔑 password admin
+let password = prompt("Masukkan password admin");
+
+if(password !== "davina123"){
+    alert("Password salah!");
+    return;
+}
+
+let data =
+    JSON.parse(localStorage.getItem("pesanRahasia")) || [];
+
+let box = document.getElementById("adminPesan");
+
+if(data.length === 0){
+    box.innerHTML = `
+    <p style="margin-top:15px;color:#aaa">
+    Belum ada pesan 💔
+    </p>`;
+    return;
+}
+
+box.innerHTML = "";
+
+data.reverse().forEach(p => {
+
+    box.innerHTML += `
+    <div class="pesan-box">
+        <b>💖 Pesan Rahasia</b><br>
+
+        <small style="color:#aaa">
+        ${p.waktu}
+        </small>
+
+        <p style="margin-top:10px">
+        ${p.pesan}
+        </p>
+    </div>
+    `;
+});
 }
     </script>
 
