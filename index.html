@@ -677,7 +677,24 @@ footer h3{
     from{opacity:0; transform:translateY(10px);}
     to{opacity:1; transform:translateY(0);}
 }
+/* ❤️ hati terbang */
+.love-fly{
+    position:absolute;
+    bottom:0;
+    font-size:20px;
+    animation: naik 2s linear forwards;
+}
 
+@keyframes naik{
+    from{
+        transform:translateY(0);
+        opacity:1;
+    }
+    to{
+        transform:translateY(-200px);
+        opacity:0;
+    }
+}
 @media(max-width:480px){
 
 h1{
@@ -925,18 +942,6 @@ img, video{
         text-align:left;
     }
 }
-#adminPesan{
-    margin-top:20px;
-}
-
-button[onclick="lihatPesan()"]{
-    opacity:0;
-    position:fixed;
-    bottom:5px;
-    right:5px;
-    width:20px;
-    height:20px;
-}
 
 /* ===== TAMBAHAN (AMAN) ===== */
 
@@ -1009,13 +1014,15 @@ button[onclick="lihatPesan()"]{
 
     <p class="bucin-text">
         Barakallah Fii Umrik Yaa Gantengg 💖<br><br>
-        Semoga dangan bertambahnya usia mas,mas jadi pribadi yg lebih baik lg,selalu bahagia, panjang umur,<br>
-        dan sehat selalu baik fisik maupun mentalnya, dimudahkan dalam mencari rezeki,dipermudah semua urusannya
-        di umur mas yg sekarang semoga selalu jaga kewajiban mas sebagai laki-laki yaa,dikurangi buat hal hal yg ngaa bermanfaat,
-        pesen adek buat mas mas harus bisa jaga diri mas sendiri yaa,ohh iyaa terimakasi yaa
-        udah udah nemenin hari" adek selama ini,semangat dalam berproses yaa gantengg,dan ingat kalo dunia tidak
-        berpihak ke mas,mas masih punya adek yg akan selalu sayanggg ke mas,adek selalu mendoakan mas dan selalu support mas
-        sekali lg barakallah fii umrik cintaa selalu tingkatkan value diri mas yaa 🤍❤️
+        Semoga dangan bertambahnya usia mas yg sekarang,semoga mas jadi pribadi yg lebih baik lg,selalu bahagia, panjang umur,<br>
+        dan selalu diberi kesehatan baik fisik maupun mental,semoga dimudahkan dalam mencari rezeki,dipermudah semua urusannya.
+        di umur mas yg sekarang semoga selalu inget bahwa ada kewajiban yg harus mas lakukan sebagai laki-laki yaa, jauhi buat hal hal yg ngga bermanfaat,
+        tingkatin terus value diri mas.
+        pesen adek buat mas satu mas harus bisa jaga diri mas sendiri yaa jangan terpengaruh ke hal hal negatif,ohh iyaa terimakasi yaa
+        udah mau nemenin hari" adek selama ini,adek harap kedepannya selalu sama seperti mas sekarang,jangan pernah berubah yaaa,
+        semangat dalam berproses yaa gantengg,dan ingat kalo dunia tidak berpihak ke mas,mas masih punya adek yg akan selalu sayanggg ke mas,
+        adek selalu mendoakan mas dan selalu support mas
+        sekali lg barakallah fii umrik cintaa adek sayangggggg masssss🤍❤️
     </p>
 
     <div class="btn-group">
@@ -1024,7 +1031,7 @@ button[onclick="lihatPesan()"]{
     
         <!-- 💌 TOMBOL SURAT -->
         <div class="surat-btn" onclick="toggleSurat()">
-            💌 Adakah Pesan Buat Adek?
+            💌 Kirim Pesan Buat Adek
         </div>
     </div>
 
@@ -1039,24 +1046,9 @@ button[onclick="lihatPesan()"]{
         <button onclick="kirimSurat()">Kirim 💕</button>
         <button onclick="toggleSurat()">Tutup ❌</button>
 
+        <!-- HASIL PESAN -->
         <p id="hasilSurat"></p>
-
-        <!-- 🔒 BUTTON ADMIN -->
-        <button onclick="lihatPesan()" 
-        style="
-        margin-top:10px;
-        background:black;
-        color:white;
-        padding:10px 15px;
-        border:none;
-        border-radius:10px;
-        cursor:pointer;
-        ">
-        🔒 Lihat Pesan Rahasia
-        </button>
-        
-        <!-- TEMPAT PESAN -->
-        <div id="adminPesan"> </div>
+    </div>
 
 </div>
 
@@ -1084,7 +1076,7 @@ button[onclick="lihatPesan()"]{
             <div class="timeline-content">
                 <h3>Februari 2026 ✨</h3>
                 <p>
-                    Awal pertama kali kita kenal tepat tanggal 9 Februari.
+                    Awal pertama kali kita kenal tanpa sengaja tepat tanggal 9 Februari.
                     Dari yang awalnya cuma orang asing,
                     ternyata sekarang jadi rumah ternyaman buat satu sama lain.
                 </p>
@@ -1098,7 +1090,7 @@ button[onclick="lihatPesan()"]{
                 <p>
                     Mulai banyak cerita,
                     mulai banyak momen kecil yang ternyata jadi berarti.
-                    Hari-hari mulai terasa lebih bahagia karena ada mas.
+                    Hari-hari mulai terasa lebih bahagia karena ada massss.
                 </p>
             </div>
         </div>
@@ -1123,7 +1115,8 @@ button[onclick="lihatPesan()"]{
                     Bulan spesial buat mas.
                     Semua kenangan, tawa, dan rasa sayang adek
                     tersimpan di web ini supaya mas selalu inget
-                    kalau adek sayang banget sama mas 💖
+                    kalau adek sayang banget sama mas tanpa bisa dijelaskan
+                    oleh kata kata💖
                 </p>
             </div>
         </div>
@@ -1135,7 +1128,7 @@ button[onclick="lihatPesan()"]{
                 <p>
                     Semoga kisah ini bukan cuma tentang hari ini,
                     tapi tentang perjalanan panjang yang akan terus kita lalui bersama,
-                    sampai kapanpun 🤍
+                    sampai kapanpun dan tidak ada hentinya🤍
                 </p>
             </div>
         </div>
@@ -1756,30 +1749,25 @@ let now = new Date();
 const bulanUltah = now.getMonth() + 1;
 const tanggalUltah = now.getDate();
 
-// 🔥 ubah jadi true
-const TEST_MODE = true;
 
 function cekBirthday(){
 
-    // MODE TEST
-    if(TEST_MODE){
-        document.getElementById("giftPopup").style.display = "flex";
-        startConfetti();
-        return;
-    }
+const now = new Date();
 
-    const now = new Date();
-    const tahun = now.getFullYear();
+const tahun = now.getFullYear();
 
-    const start = new Date(tahun, 4, 11, 0, 0, 0);
-    const end   = new Date(tahun, 4, 11, 23, 59, 59);
+// target: 11 Mei 00:00 sampai 11 Mei 23:59
+const start = new Date(tahun, 4, 11, 0, 0, 0);   // 11 Mei 00:00
+const end   = new Date(tahun, 4, 11, 23, 59, 59); // 11 Mei 23:59
 
-    if(now >= start && now <= end){
-        document.getElementById("giftPopup").style.display = "flex";
-        startConfetti();
-    }else{
-        startCountdown();
-    }
+if (now >= start && now <= end) {
+
+    document.getElementById("giftPopup").style.display = "flex";
+
+} else {
+
+    startCountdown();
+}
 }
 
 // 🎁 BUKA KADO
@@ -1806,12 +1794,9 @@ function bukaKado(){
         let musik = document.getElementById("birthdayMusic");
         musik.play().catch(()=>{});
 
-        // 🎊 efek
-        startConfetti();
-        loveEffect();
-
     },400);
 }
+
 
 function masukWeb(){
 
@@ -1876,42 +1861,25 @@ function toggleSurat(){
 }
 
 
+// 💕 kirim surat + SIMPAN + ANIMASI
 function kirimSurat(){
+    let isi = document.getElementById("isiSurat").value;
 
-let isi = document.getElementById("isiSurat").value;
+    if(isi.trim() === ""){
+        alert("Isi dulu pesannya 😡💔");
+        return;
+    }
 
-if(isi.trim() === ""){
-    alert("Isi dulu pesannya 😡💔");
-    return;
+    // 🔥 SIMPAN KE LOCAL STORAGE
+    localStorage.setItem("suratCinta", isi);
+
+    tampilkanSurat(isi);
+
+    document.getElementById("isiSurat").value = "";
+
+    // 💖 efek hati
+    efekHati();
 }
-
-// 🔒 ambil data lama
-let pesanRahasia =
-    JSON.parse(localStorage.getItem("pesanRahasia")) || [];
-
-// ➕ tambah pesan baru
-pesanRahasia.push({
-    pesan: isi,
-    waktu: new Date().toLocaleString("id-ID")
-});
-
-// 💾 simpan
-localStorage.setItem(
-    "pesanRahasia",
-    JSON.stringify(pesanRahasia)
-);
-
-// notif
-document.getElementById("hasilSurat").innerHTML =
-    "💖 Pesan berhasil dikirim";
-
-// kosongkan textarea
-document.getElementById("isiSurat").value = "";
-
-// efek hati
-efekHati();
-}
-
 
 // 💾 tampilkan pesan (biar ga hilang)
 function tampilkanSurat(teks){
@@ -1957,49 +1925,6 @@ function login(){
 
         cekBirthday(); // 🔥 WAJIB
     }
-}
-
-function lihatPesan(){
-
-// 🔑 password admin
-let password = prompt("Masukkan password admin");
-
-if(password !== "davina123"){
-    alert("Password salah!");
-    return;
-}
-
-let data =
-    JSON.parse(localStorage.getItem("pesanRahasia")) || [];
-
-let box = document.getElementById("adminPesan");
-
-if(data.length === 0){
-    box.innerHTML = `
-    <p style="margin-top:15px;color:#aaa">
-    Belum ada pesan 💔
-    </p>`;
-    return;
-}
-
-box.innerHTML = "";
-
-data.reverse().forEach(p => {
-
-    box.innerHTML += `
-    <div class="pesan-box">
-        <b>💖 Pesan Rahasia</b><br>
-
-        <small style="color:#aaa">
-        ${p.waktu}
-        </small>
-
-        <p style="margin-top:10px">
-        ${p.pesan}
-        </p>
-    </div>
-    `;
-});
 }
     </script>
 
