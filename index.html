@@ -1717,11 +1717,12 @@ img, video{
 
 
 <!-- 💖 FLOAT FOTO -->
-<div class="float-photo adek" onclick="openPopup('adek.jpeg','Adek Cantik 💕')">
-    <img src="adek.jpeg">
+<!-- 💖 FLOAT FOTO -->
+<div id="floatAdek" class="float-photo adek" style="display:none;" onclick="openPopup('adek.jpeg','Adek Cantik 💕')">
+        <img src="adek.jpeg">
 </div>
 
-<div class="float-photo mas" onclick="openPopup('mas.jpeg','Mas Ganteng 💖')">
+<div id="floatMas" class="float-photo mas" style="display:none;" onclick="openPopup('mas.jpeg','Mas Ganteng 💖')">
     <img src="mas1.jpeg">
 </div>
 
@@ -1743,7 +1744,9 @@ img, video{
 window.onload = function(){
     if(localStorage.getItem("login") === "true"){
         document.getElementById("loginPage").style.display="none";
-
+        
+        document.getElementById("floatAdek").style.display = "block";
+        document.getElementById("floatMas").style.display = "block";
         // 🔥 TAMBAHKAN INI
         cekBirthday();
     }
@@ -2075,6 +2078,9 @@ function login(){
 
         let lp = document.getElementById("loginPage");
         lp.style.display="none";
+
+        document.getElementById("floatAdek").style.display = "block";
+document.getElementById("floatMas").style.display = "block";
 
         cekBirthday(); // 🔥 WAJIB
     }
