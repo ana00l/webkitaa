@@ -919,6 +919,131 @@ img, video{
     font-size:14px;
 }
 
+
+/* ===== FLOAT FOTO ===== */
+.float-photo{
+    position:fixed;
+    right:15px;
+    width:65px;
+    height:65px;
+    border-radius:50%;
+    overflow:hidden;
+    cursor:pointer;
+    z-index:9999;
+
+    border:3px solid #ff4d6d;
+    box-shadow:0 0 15px rgba(255,77,109,0.6);
+
+    animation: floatPhoto 3s ease-in-out infinite;
+    transition:0.3s;
+}
+
+.float-photo:hover{
+    transform:scale(1.1);
+}
+
+/* posisi */
+.float-photo.adek{
+    bottom:20px;
+}
+
+.float-photo.mas{
+    bottom:95px;
+}
+
+.float-photo img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+/* animasi */
+@keyframes floatPhoto{
+    0%{ transform:translateY(0px); }
+    50%{ transform:translateY(-8px); }
+    100%{ transform:translateY(0px); }
+}
+
+/* ===== POPUP ===== */
+.photo-popup{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.9);
+
+    display:none;
+    justify-content:center;
+    align-items:center;
+
+    z-index:100000;
+
+    animation: fadePopup 0.4s ease;
+}
+
+/* isi popup */
+.popup-content{
+    text-align:center;
+    animation: zoomIn 0.4s ease;
+}
+
+.popup-content img{
+    width:300px;
+    max-width:90%;
+    border-radius:20px;
+    box-shadow:0 0 25px rgba(255,255,255,0.2);
+}
+
+.popup-content h3{
+    margin-top:15px;
+    color:white;
+    font-size:22px;
+}
+
+/* tombol close */
+.close-popup{
+    position:absolute;
+    top:20px;
+    right:25px;
+    color:white;
+    font-size:30px;
+    cursor:pointer;
+}
+
+/* animasi */
+@keyframes fadePopup{
+    from{opacity:0;}
+    to{opacity:1;}
+}
+
+@keyframes zoomIn{
+    from{
+        transform:scale(0.7);
+        opacity:0;
+    }
+    to{
+        transform:scale(1);
+        opacity:1;
+    }
+}
+
+/* HP */
+@media(max-width:768px){
+
+    .float-photo{
+        width:55px;
+        height:55px;
+    }
+
+    .float-photo.mas{
+        bottom:85px;
+    }
+
+    .popup-content img{
+        width:250px;
+    }
+}
+
+
+
 /* responsive */
 @media(max-width:768px){
 
@@ -1139,7 +1264,14 @@ img, video{
 <!-- HALAMAN 2 MUSIK -->
 <section class="page music">
     <h2>Lagu Favorit Kita</h2>
-
+    <p style="
+    color:#aaa;
+    margin-top:10px;
+    margin-bottom:20px;
+    font-size:14px;
+">
+    Klik lagu favorit kita buat nemenin mas baca semua kenangan di web ini yaa 💖🎶
+</p>
     <div class="carousel">
 
         <div class="card" onclick="playSong('lagu1.mp3')">
@@ -1584,6 +1716,27 @@ img, video{
 </section>
 
 
+<!-- 💖 FLOAT FOTO -->
+<div class="float-photo adek" onclick="openPopup('adek.jpeg','Adek Cantik 💕')">
+    <img src="adek.jpeg">
+</div>
+
+<div class="float-photo mas" onclick="openPopup('mas.jpeg','Mas Ganteng 💖')">
+    <img src="mas1.jpeg">
+</div>
+
+<!-- 💌 POPUP FOTO -->
+<div id="photoPopup" class="photo-popup">
+
+    <span class="close-popup" onclick="closePopup()">✖</span>
+
+    <div class="popup-content">
+        <img id="popupImg" src="">
+        <h3 id="popupTitle"></h3>
+    </div>
+
+</div>
+
 <script>
 
 
@@ -1602,7 +1755,7 @@ function logout(){
 }
 
 /* TYPEWRITER */
-const text = "Kisah kita memang baru sebentar kita bertemu dan saling kenal tanpa sengaja pada bulan februari tanggal 9 tepatnya jam 13:32 namun kenangan kita sudah banyak maka dari itu adek buat web ini untuk menyimpan semua kenangan & momen kita yang akan tersimpan serta tersusun rapih di dalam sini, web ini adek buat dengan sengaja agar setiap momen kebersamaan kita bisa terukir jelas dan nyata, kebersamaan yg sederhana ini lah yg buat adek merasa bahagia sekali,ini adek buat untuk mas agar selalu inget adek dimanapun dan kapanpun,kalo mas kangen adek buka web ini aja yaa, adek sayangggggg masss💖";
+const text = "Kisah kita memang baru sebentar kita bertemu dan saling kenal tanpa sengaja pada bulan februari tanggal 9 tepatnya jam 13:32 kita dipertemukan namun kenangan kita sudah cukup banyak maka dari itu adek buat web ini untuk menyimpan semua kenangan & momen kita yang akan tersimpan serta tersusun rapih di dalam sini, web ini adek buat dengan sengaja agar setiap momen kebersamaan kita bisa terukir jelas dan nyata, kebersamaan yg sederhana ini lah yg buat adek merasa bahagia sekali,ini adek buat untuk mas agar selalu inget adek dimanapun dan kapanpun,kalo mas kangen adek buka web ini aja yaa, adek sayangggggg masss💖";
 let i=0;
 function type(){
     if(i<text.length){
@@ -1926,6 +2079,24 @@ function login(){
         cekBirthday(); // 🔥 WAJIB
     }
 }
+
+
+// 💖 buka popup foto
+function openPopup(foto, title){
+
+document.getElementById("photoPopup").style.display = "flex";
+
+document.getElementById("popupImg").src = foto;
+
+document.getElementById("popupTitle").innerHTML = title;
+}
+
+// ❌ tutup popup
+function closePopup(){
+document.getElementById("photoPopup").style.display = "none";
+}
+
+
     </script>
 
                </body>
